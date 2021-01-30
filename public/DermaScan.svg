@@ -2,7 +2,7 @@
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
 	<defs>
-		<style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:url(#linear-gradient);}.cls-4{fill:url(#linear-gradient-2);}.cls-5{fill:url(#linear-gradient-3);}.cls-6{fill:url(#linear-gradient-4);}.cls-7{font-size:151.543px;font-family:OpenSans-SemiBold, Open Sans, Helvetica;font-weight:600;}.cls-8{font-family:OpenSans-Light, Open Sans;font-weight:300;}</style>
+		<style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:url(#linear-gradient);}.cls-4{fill:url(#linear-gradient-2);}.cls-5{fill:url(#linear-gradient-3);}.cls-6{fill:url(#linear-gradient-4);}.cls-7{font-size:151.543px;font-family:OpenSans-SemiBold, Open Sans, Helvetica;font-weight:600;}.cls-8{font-family:OpenSans-Light, Open Sans, Helvetica;font-weight:300;}</style>
 		<clipPath id="clip-path">
 			<path class="cls-1" d="M597.952,196.49h76.5a30.169,30.169,0,0,1,30.169,30.169v79.115H656.467c-1.165-70.8,11.127-58.156-58.515-59.374ZM339.129,305.774v-46.61A12.763,12.763,0,0,1,351.893,246.4H405.2V196.49H328.03a30.169,30.169,0,0,0-30.169,30.169v79.115ZM405.2,578.615H351.893a12.764,12.764,0,0,1-12.764-12.765V518.319H297.861v79.976a30.169,30.169,0,0,0,30.169,30.169H405.2Zm251.268-60.3c-1.334,71.5,11.736,59.164-58.515,60.3v49.849h76.5a30.169,30.169,0,0,0,30.169-30.169V518.319Z"/>
 		</clipPath>
