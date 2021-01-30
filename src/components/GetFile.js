@@ -2,11 +2,13 @@ import React from 'react';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
 
+import Box from '@material-ui/core/Box';
+
+
 class getFile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {file: '' };
-        this.handleFile = this.handleFile.bind(this);
     }
 
     handleFile(e) {
@@ -41,8 +43,7 @@ class getFile extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Send Image</h1>
+            <div className="getfile">
                 <input
                   accept="image/*"
                   style={{ display: 'none' }}
@@ -53,11 +54,16 @@ class getFile extends React.Component {
                   onChange={(e) => this.handleFile(e)}
                 />
                 <label htmlFor="get-file">
-                  <Button variant="outlined" component="span" color="primary">
-                    Select Image
-                  </Button>
+                    <Box m={2}>
+                        <Button variant="outlined" component="span" color="primary" className="btn1">
+                            Select Image
+                        </Button>
+                    </Box>
                 </label>
-                <Button type="submit" variant="outlined" component="span" color="primary" onClick={()=>this.handleUpload()}>Upload</Button>
+                <Box m={2}>
+                    <Button type="submit" variant="outlined" component="span" color="primary"
+                        onClick={()=>this.handleUpload()}>Upload</Button>
+                </Box>
             </div>
         );
     }
