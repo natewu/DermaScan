@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import Rotate from "react-reveal/Rotate";
 import Landing from "./components/Landing";
 import Title from "./components/Title";
 import Scanner from "./components/Scanner";
@@ -17,7 +18,10 @@ export class App extends Component {
           <div className="content">
             <ArrowDropDownIcon className="scrollDown"/>
             <Title/>
-            <Scanner/>
+            <Rotate bottom left>
+              <Scanner/>
+            </Rotate>
+           
             <GetFile/>
           </div>
           <Footer/>
