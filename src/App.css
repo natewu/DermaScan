@@ -13,9 +13,10 @@
 .content{
   margin-top: 0 auto;
   background-color: #E5F8F5;
-  display:grid;
-  grid-template-columns: 0.5fr 1fr 3fr 1fr 0.5fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  padding-bottom: 100px;
+  /* display:grid; */
+  /* grid-template-columns: 0.5fr 1fr 3fr 1fr 0.5fr; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
 }
 .scrollDown{
   animation: MoveUpDown 2s linear infinite;

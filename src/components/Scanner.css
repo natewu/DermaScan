@@ -1,0 +1,8 @@
+.scanner{
+    background-color: whitesmoke;
+    width: 50vw;
+    min-height: 60vh;
+    margin: 0 auto 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 16px 10px rgb(0 0 0 / 10%)
+}

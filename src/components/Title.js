@@ -11,10 +11,12 @@ function Title() {
     }, []);
   
     return(
-        <div className="Parallax__background" style={{transform: `translateY(-${offsetY *0.35}px)`, color:'black', fontWeight:"350", gridColumn:"2", gridRow:"2"}}>
-            <p>
-                Random description stuff goes here. random description, description
-            </p>
+        <div style={{display:"grid", gridTemplateColumns:"0.5fr 1fr 1fr 1fr 0.5fr"}}>
+            <div className="Parallax__background" style={{transform: `translateY(-${offsetY *0.35}px)`, color:'black', fontWeight:"350", gridColumn:"2", marginTop:"40vh", marginBottom:"-15vh", paddingBottom:"10vh"}}>
+                <p>
+                    Random description stuff goes here. random description, description
+                </p>
+            </div>
         </div>
     
     )
