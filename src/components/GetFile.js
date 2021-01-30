@@ -57,8 +57,7 @@ class getFile extends React.Component {
                     Select Image
                   </Button>
                 </label>
-                <Button type="submit" variant="outlined" component="span" color="primary"
-                        onClick={()=>this.handleUpload()}>Upload</Button>
+                <Button type="submit" variant="outlined" component="span" color="primary" onClick={()=>this.handleUpload()}>Upload</Button>
             </div>
         );
     }
