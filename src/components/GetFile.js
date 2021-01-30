@@ -53,11 +53,11 @@ class getFile extends React.Component {
                   onChange={(e) => this.handleFile(e)}
                 />
                 <label htmlFor="get-file">
-                  <Button variant="contained" component="span" color="primary">
+                  <Button variant="outlined" component="span" color="primary">
                     Select Image
                   </Button>
                 </label>
-                <Button type="submit" variant="contained" component="span" color="primary"
+                <Button type="submit" variant="outlined" component="span" color="primary"
                         onClick={()=>this.handleUpload()}>Upload</Button>
             </div>
         );
