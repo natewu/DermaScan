@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import "./Scanner.css";
+import GetFile from "./GetFile";
 
 export class Scanner extends Component {
     render() {
         return (
             <div className="scanner">
-                Scanner
+                <h1>Scanner</h1>
+                <div className="results">
+                </div>
+                <GetFile passStyle={styles}/>
             </div>
         )
     }
+}
+
+const styles = {
+    gridRow: "3",
+    alignContent: "center",
+    alignItems: "center",
+    margin:"0 auto",
+    display: "grid"
 }
 
 export default Scanner
