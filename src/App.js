@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Landing from "./components/Landing";
 import Title from "./components/Title";
+import Scanner from "./components/Scanner";
+import Footer from "./components/Footer";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./App.css";
 
@@ -11,10 +13,12 @@ export class App extends Component {
       <div className="App" >
         <ParallaxProvider>
           <Landing/>
-          <div className="content" style={{minHeight:"1000px"}}>
+          <div className="content">
             <ArrowDropDownIcon className="scrollDown"/>
             <Title/>
+            <Scanner/>
           </div>
+          <Footer/>
         </ParallaxProvider>
       </div>
     )
