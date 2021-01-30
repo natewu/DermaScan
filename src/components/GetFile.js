@@ -1,20 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
-import { View, StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        padding: 20,
-    },
-    buttonContainer: {
-        flex: 1,
-        margin: 10,
-    }
-});
-
-class getFile extends React.Component {
+class GetFile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {file: '' };
@@ -49,10 +37,9 @@ class getFile extends React.Component {
       .catch((err) => { });
   }
 
-
     render() {
         return (
-            <div className="getfile">
+            <div className="getfile" style={this.props.passStyle}>
                 <input
                   accept="image/*"
                   style={{ display: 'none' }}
@@ -62,25 +49,25 @@ class getFile extends React.Component {
                   formEncType={'multipart/form-data'}
                   onChange={(e) => this.handleFile(e)}
                 />
-                <View style={styles.container}>
+                <div>
                     <label htmlFor="get-file">
-                        <View style={styles.buttonContainer}>
-                            <Button variant="outlined" component="span" color="primary" className="btn1">
+                        <div>
+                            <Button variant="outlined" component="span" color="primary" className="btn1" onChange={this.handleUpload()}>
                                 Select Image
                             </Button>
-                        </View>
+                        </div>
                     </label>
-                    <View style={styles.buttonContainer}>
+                    {/* <div>
                         <Button type="submit" variant="outlined" component="span" color="primary"
                             onClick={()=>this.handleUpload()}>Upload</Button>
-                    </View>
-                </View>
+                    </div> */}
+                </div>
             </div>
         );
     }
 }
 
-export default getFile;
+export default GetFile;
 
 export function uploadSuccess({ data }) {
   return {

@@ -5,7 +5,7 @@ import Landing from "./components/Landing";
 import Title from "./components/Title";
 import Scanner from "./components/Scanner";
 import Footer from "./components/Footer";
-import GetFile from "./components/GetFile";
+
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./App.css";
 
@@ -22,7 +22,7 @@ export class App extends Component {
               <Scanner/>
             </Rotate>
            
-            <GetFile/>
+            
           </div>
           <Footer/>
         </ParallaxProvider>
