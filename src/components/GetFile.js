@@ -1,9 +1,18 @@
 import React from 'react';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
+import { View, StyleSheet } from 'react-native';
 
-import Box from '@material-ui/core/Box';
-
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        padding: 20,
+    },
+    buttonContainer: {
+        flex: 1,
+        margin: 10,
+    }
+});
 
 class getFile extends React.Component {
     constructor(props) {
@@ -52,17 +61,19 @@ class getFile extends React.Component {
                   formEncType={'multipart/form-data'}
                   onChange={(e) => this.handleFile(e)}
                 />
-                <label htmlFor="get-file">
-                    <Box m={2}>
-                        <Button variant="outlined" component="span" color="primary" className="btn1">
-                            Select Image
-                        </Button>
-                    </Box>
-                </label>
-                <Box m={2}>
-                    <Button type="submit" variant="outlined" component="span" color="primary"
-                        onClick={()=>this.handleUpload()}>Upload</Button>
-                </Box>
+                <View style={styles.container}>
+                    <label htmlFor="get-file">
+                        <View style={styles.buttonContainer}>
+                            <Button variant="outlined" component="span" color="primary" className="btn1">
+                                Select Image
+                            </Button>
+                        </View>
+                    </label>
+                    <View style={styles.buttonContainer}>
+                        <Button type="submit" variant="outlined" component="span" color="primary"
+                            onClick={()=>this.handleUpload()}>Upload</Button>
+                    </View>
+                </View>
             </div>
         );
     }
