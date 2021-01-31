@@ -25,7 +25,7 @@ router.get('/:image', function(req, res){
 });
 
 router.post('/', upload.single('file'), (req, res) => {
-  console.log("")
+  console.log("in router post")
 
   return new Promise(() => {
     const handler = tfn.io.fileSystem('./tfjs_model/model.json');
@@ -39,14 +39,17 @@ router.post('/', upload.single('file'), (req, res) => {
   })
 
 
-  // async function load() {
-  //   const handler = tfn.io.fileSystem('./tfjs_model/model.json');
-  //   var model = await tf.loadLayersModel(handler);
-  //   console.log("here");
-  //   console.log(model);
-  //   return model;
-  // };
-  // model = load();
+  async function load() {
+    const handler = tfn.io.fileSystem('./tfjs_model/model.json');
+    var model = await tf.loadLayersModel(handler);
+    console.log("here");
+    console.log(model);
+    return model;
+  };
+  let model = load();
+  res.send(predict(model));
+
+  });
 
   function predict(model) {
     // code to connect to the <input> given value will go here (just not yet)
@@ -66,8 +69,5 @@ router.post('/', upload.single('file'), (req, res) => {
       // result = result.round().dataSync()[0];  // round and get value
       // alert(result ? "odd" : "even");  // creates pop-up
     });
-  };
-  });
-
-
+  }
 module.exports = router;

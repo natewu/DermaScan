@@ -14,10 +14,9 @@ class GetFile extends React.Component {
     }
 
     handleFile(e) {
-        console.log("Uploading....");
         this.state.file = e.target.files[0];
         let fileName = this.fileInput.current.files[0].name;
-        console.log(fileName);
+        console.log("Uploading " + fileName);
         this.handleUpload(fileName);
     }
 
@@ -37,6 +36,7 @@ class GetFile extends React.Component {
     })
     .then((res) => {
         if (res.status === 200) {
+            console.log(res);
             this.setState( { results: res});
             let filePath = url + '/' + fileName;
             this.setImage(filePath);
