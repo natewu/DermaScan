@@ -11,13 +11,14 @@ class GetFile extends React.Component {
         };
     }
 
-    handleFile(e) {
+  handleFile(e) {
       console.log("Uploading....");
-      this.setState({ file:e.target.files[0] });
+      // this.setState({ file:e.target.files[0] });
+      this.state.file = e.target.files[0];
       this.handleUpload();
   }
 
-  handleUpload() {
+  async handleUpload() {
     let formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('name', 'skin pic');
@@ -30,15 +31,17 @@ class GetFile extends React.Component {
         data:formData,
         withCredentials: false,
     })
-      .then((res) => {
-          if (res.status === 200) {
-              console.log(res);
-          }
-          else {
-            console.log("Error occurred")
-          }
-      })
-      .catch((err) => { });
+    .then((res) => {
+        if (res.status === 200) {
+            console.log(res);
+            this.state.results[0]=res.data.path;
+            console.log(this.state.results[0]);
+        }
+        else {
+          console.log("Error occurred")
+        }
+    })
+    .catch((err) => { });
   }
 
     render() {
@@ -51,7 +54,7 @@ class GetFile extends React.Component {
                   type="file"
                   name="file"
                   formEncType={'multipart/form-data'}
-                  onChange={(e) => this.handleFile(e)}
+                  onInput={(e) => this.handleFile(e)}
                 />
                 <div>
                     <label htmlFor="get-file">
