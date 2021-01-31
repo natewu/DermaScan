@@ -13,13 +13,17 @@ class GetFile extends React.Component {
 
     handleFile(e) {
       console.log("Uploading....");
-      this.setState({ file:e.target.files[0] });
+      this.state.file = e.target.files[0];
+      console.log("file state 1:");
+      console.log(this.state.file);
       this.handleUpload();
   }
 
   handleUpload() {
     let formData = new FormData();
     formData.append('file', this.state.file);
+    console.log("file state 2:");
+    console.log(this.state.file);
     formData.append('name', 'skin pic');
     axios({
         url: "http://localhost:3005/image-uploads",
@@ -56,15 +60,11 @@ class GetFile extends React.Component {
                 <div>
                     <label htmlFor="get-file">
                         <div>
-                            <Button variant="outlined" component="span" color="primary" className="btn1">
+                            <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
                             </Button>
                         </div>
                     </label>
-                    {/* <div>
-                        <Button type="submit" variant="outlined" component="span" color="primary"
-                            onClick={()=>this.handleUpload()}>Upload</Button>
-                    </div> */}
                 </div>
             </div>
         );
