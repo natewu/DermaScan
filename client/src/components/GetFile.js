@@ -81,7 +81,7 @@ class GetFile extends React.Component {
                     <label htmlFor="get-file">
                         <div>
                             <img src={this.state.image}
-                                 style={{maxWidth:"100%", height:"auto", marginTop:"20px", marginLeft:"auto", marginRight:"auto", marginBottom:"auto"}} />
+                                  style={{maxWidth:"100%", height:"auto", marginTop:"20px", marginLeft:"auto", marginRight:"auto", marginBottom:"auto"}} />
                             <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
                             </Button>

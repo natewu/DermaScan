@@ -49,25 +49,25 @@ router.post('/', upload.single('file'), (req, res) => {
   // let model = load();
   // res.send(predict(model));
   res.send("success");
+});
+
+function predict(model) {
+  // code to connect to the <input> given value will go here (just not yet)
+  const image = req.file;
+  console.log("here");
+  const image_tensor = tf.convert_to_tensor(image)  // and convert it to a tensor
+  const verbose = true;
+
+  console.log(image_tensor.print(verbose));
+  const reshaped_tensor = tf.reshape([null,28,28,3]);
+  console.log(reshaped_tensor.print(verbose));
+
+  // now lets make the prediction
+  model.then(model => {
+    let result = model.predict(reshapedTensor);
+    console.log(result);
+    // result = result.round().dataSync()[0];  // round and get value
+    // alert(result ? "odd" : "even");  // creates pop-up
   });
-
-  function predict(model) {
-    // code to connect to the <input> given value will go here (just not yet)
-    const image = req.file;
-    console.log("here");
-    const image_tensor = tf.convert_to_tensor(image)  // and convert it to a tensor
-    const verbose = true;
-
-    console.log(image_tensor.print(verbose));
-    const reshaped_tensor = tf.reshape([null,28,28,3]);
-    console.log(reshaped_tensor.print(verbose));
-
-    // now lets make the prediction
-    model.then(model => {
-      let result = model.predict(reshapedTensor);
-      console.log(result);
-      // result = result.round().dataSync()[0];  // round and get value
-      // alert(result ? "odd" : "even");  // creates pop-up
-    });
-  }
+}
 module.exports = router;
