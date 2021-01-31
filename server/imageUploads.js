@@ -23,35 +23,33 @@ router.use(function(req, res, next){
 router.get('/:image', function(req, res){
     res.sendFile(__dirname + '/image-uploads' + req.path);
 });
+
 router.post('/', upload.single('file'), (req, res) => {
   console.log("")
-  // return new Promise(() => {
-  //   const handler;
 
-  //   return handler;
-
-  // }).then(tfn.io.fileSystem('./tfjs_model/model.json') => {
-  //   return tf.loadLayers(tfn.io.fileSystem('./tfjs_model/model.json'))
-  // }).catch((error) => {
-  //   console.log(error) // here u can check an error
-  // })
-
-  async function load() {
+  return new Promise(() => {
     const handler = tfn.io.fileSystem('./tfjs_model/model.json');
-    var model = await tf.loadLayersModel(handler);
-    console.log("here");
-    console.log(model);
-    return model;
-  };
-  model = load();
+
+    return handler;
+
+  }).then((yourHandler) => {
+    return tf.loadLayersModel(handler);
+  }).catch((error) => {
+    console.log(error) // here u can check an error
+  })
 
 
-// const handler = tfn.io.fileSystem('./tfjs_model/model.json');
-// const model = await tf.loadModel(handler);
+  // async function load() {
+  //   const handler = tfn.io.fileSystem('./tfjs_model/model.json');
+  //   var model = await tf.loadLayersModel(handler);
+  //   console.log("here");
+  //   console.log(model);
+  //   return model;
+  // };
+  // model = load();
 
   function predict(model) {
     // code to connect to the <input> given value will go here (just not yet)
-
     const image = req.file;
     console.log("here");
     const image_tensor = tf.convert_to_tensor(image)  // and convert it to a tensor
@@ -65,12 +63,11 @@ router.post('/', upload.single('file'), (req, res) => {
     model.then(model => {
       let result = model.predict(reshapedTensor);
       console.log(result);
-      res.send(result);
       // result = result.round().dataSync()[0];  // round and get value
       // alert(result ? "odd" : "even");  // creates pop-up
     });
   };
-
   });
+
 
 module.exports = router;
