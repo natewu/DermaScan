@@ -21,7 +21,7 @@ router.get('/', function(req, res){
     res.send('GET route on image uploads.');
 });
 router.post('/', upload.single('file'), (req, res) => {
-    res.send(req.file);
     console.log(req.file);
+    res.send(req.file);
 });
 module.exports = router;
