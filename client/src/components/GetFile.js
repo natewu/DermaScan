@@ -11,15 +11,13 @@ class GetFile extends React.Component {
         };
     }
 
-    handleFile(e) {
+  handleFile(e) {
       console.log("Uploading....");
       this.state.file = e.target.files[0];
-      console.log("file state 1:");
-      console.log(this.state.file);
       this.handleUpload();
   }
 
-  handleUpload() {
+  async handleUpload() {
     let formData = new FormData();
     formData.append('file', this.state.file);
     console.log("file state 2:");
@@ -34,15 +32,17 @@ class GetFile extends React.Component {
         data:formData,
         withCredentials: false,
     })
-      .then((res) => {
-          if (res.status === 200) {
-              console.log(res);
-          }
-          else {
-            console.log("Error occurred")
-          }
-      })
-      .catch((err) => { });
+    .then((res) => {
+        if (res.status === 200) {
+            console.log(res);
+            this.state.results[0]=res.data.path;
+            console.log(this.state.results[0]);
+        }
+        else {
+          console.log("Error occurred")
+        }
+    })
+    .catch((err) => { });
   }
 
     render() {
@@ -55,7 +55,7 @@ class GetFile extends React.Component {
                   type="file"
                   name="file"
                   formEncType={'multipart/form-data'}
-                  onChange={(e) => this.handleFile(e)}
+                  onInput={(e) => this.handleFile(e)}
                 />
                 <div>
                     <label htmlFor="get-file">
@@ -64,6 +64,7 @@ class GetFile extends React.Component {
                                 Select Image
                             </Button>
                         </div>
+                        {/* {this.state.results.map(image => <img id="test" alt="test" src={image} style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)} */}
                     </label>
                 </div>
             </div>
