@@ -22,10 +22,9 @@ class GetFile extends React.Component {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
-          "access-control-allow-origin": "*"
          },
         data:formData,
-        withCredentials: true,
+        withCredentials: false,
     })
       .then((res) => {
           if (res.status === 200) {
@@ -57,10 +56,10 @@ class GetFile extends React.Component {
                             </Button>
                         </div>
                     </label>
-                    {/* <div>
+                    <div>
                         <Button type="submit" variant="outlined" component="span" color="primary"
                             onClick={()=>this.handleUpload()}>Upload</Button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         );
