@@ -11,7 +11,7 @@ export class Scanner extends Component {
                 <div className="results">
                 </div>
                 <GetFile passStyle={styles}/>
-                <Predictions passStyle={styles}/>
+
             </div>
         )
     }

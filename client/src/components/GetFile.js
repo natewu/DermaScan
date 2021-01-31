@@ -37,7 +37,7 @@ class GetFile extends React.Component {
     .then((res) => {
         if (res.status === 200) {
             console.log(res);
-            this.setState( { results: res});
+            // this.setState( { results: res});
             let filePath = url + '/' + fileName;
             this.setImage(filePath);
         }
