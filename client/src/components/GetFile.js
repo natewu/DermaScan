@@ -7,25 +7,26 @@ class GetFile extends React.Component {
         super(props);
         this.state = {
           file: '',
-          results: [],
-          setImage:[]
+          results: ''
         };
+        this.fileInput = React.createRef();
     }
 
   handleFile(e) {
       console.log("Uploading....");
       this.state.file = e.target.files[0];
-      this.handleUpload();
+      let fileName = this.fileInput.current.files[0].name;
+      console.log(fileName);
+      this.handleUpload(fileName);
   }
 
-  async handleUpload() {
+  async handleUpload(fileName) {
     let formData = new FormData();
     formData.append('file', this.state.file);
-    console.log("file state 2:");
-    console.log(this.state.file);
     formData.append('name', 'skin pic');
+    let url = 'http://localhost:3005/image-uploads';
     axios({
-        url: "http://localhost:3005/image-uploads",
+        url: url,
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
@@ -35,10 +36,9 @@ class GetFile extends React.Component {
     })
     .then((res) => {
         if (res.status === 200) {
-            console.log(res);
-            this.state.results[0]=res.data.path;
-            console.log(this.state.results[0]);
-            this.setImage(this.state.results[0]);
+            let filePath = url + '/' + fileName;
+            this.setImage(filePath);
+            console.log(this.state.results);
         }
         else {
           console.log("Error occurred")
@@ -46,11 +46,13 @@ class GetFile extends React.Component {
     })
     .catch((err) => { });
   }
-  async setImage(data){
-    this.state.setImage[0]="";
-    this.state.setImage[0]=data;
-    document.getElementById("results").src = "http://localhost:3005/"+this.state.setImage[0].replace("\\","/");
-  }
+  async setImage(path){
+  axios.get(path, { responseType: 'arraybuffer'})
+    .then(response => {
+        new Buffer(response.data, 'binary').toString('utf-8');
+        console.log(response);
+    })
+   }
 
     render() {
         return (
@@ -61,6 +63,7 @@ class GetFile extends React.Component {
                   id="get-file"
                   type="file"
                   name="file"
+                  ref={this.fileInput}
                   formEncType={'multipart/form-data'}
                   onInput={(e) => this.handleFile(e)}
                 />
@@ -72,14 +75,7 @@ class GetFile extends React.Component {
                             </Button>
                         </div>
                     </label>
-<<<<<<< HEAD
                     <img id="results" alt="Results" src=""/>
-                    {/* <div>
-                        <Button type="submit" variant="outlined" component="span" color="primary"
-                            onClick={()=>this.handleUpload()}>Upload</Button>
-                    </div> */}
-=======
->>>>>>> f69806eb8e8a8f1c40da85ee376c872a0c0f8a51
                 </div>
             </div>
         );
