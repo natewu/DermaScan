@@ -26,25 +26,26 @@ router.get('/', function(req, res){
 
 router.post('/', upload.single('file'), (req, res) => {
   console.log("")
-  // return new Promise(() => {
-  //   const handler;
-  
-  //   return handler;
-  
-  // }).then(tfn.io.fileSystem('./tfjs_model/model.json') => {
-  //   return tf.loadLayers(tfn.io.fileSystem('./tfjs_model/model.json'))
-  // }).catch((error) => {
-  //   console.log(error) // here u can check an error
-  // })
-
-  async function load() {
+  return new Promise(() => {
     const handler = tfn.io.fileSystem('./tfjs_model/model.json');
-    var model = await tf.loadLayersModel(handler);
-    console.log("here");
-    console.log(model);
-    return model;
-  };
-  model = load();
+  
+    return handler;
+  
+  }).then((yourHandler) => {
+    return tf.loadLayersModel(handler);
+  }).catch((error) => {
+    console.log(error) // here u can check an error
+  })
+  
+
+  // async function load() {
+  //   const handler = tfn.io.fileSystem('./tfjs_model/model.json');
+  //   var model = await tf.loadLayersModel(handler);
+  //   console.log("here");
+  //   console.log(model);
+  //   return model;
+  // };
+  // model = load();
   
 
 // const handler = tfn.io.fileSystem('./tfjs_model/model.json');
