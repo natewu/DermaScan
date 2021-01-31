@@ -6,53 +6,63 @@ class GetFile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          file: '',
-          results: ''
+            file: '',
+            image: '',
+            results: ''
         };
         this.fileInput = React.createRef();
     }
 
     handleFile(e) {
-        console.log("Uploading....");
         this.state.file = e.target.files[0];
         let fileName = this.fileInput.current.files[0].name;
-        console.log(fileName);
+        console.log("Uploading " + fileName);
         this.handleUpload(fileName);
     }
 
-    async handleUpload(fileName) {
-        let formData = new FormData();
-        formData.append('file', this.state.file);
-        formData.append('name', 'skin pic');
-        let url = 'http://localhost:3005/image-uploads';
-        axios({
-            url: url,
-            method: "POST",
-            headers: {
-            "Content-Type": "multipart/form-data",
-            },
-            data:formData,
-            withCredentials: false,
+  async handleUpload(fileName) {
+    let formData = new FormData();
+    formData.append('file', this.state.file);
+    formData.append('name', 'skin pic');
+    let url = 'http://localhost:3005/image-uploads';
+    axios({
+        url: url,
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+         },
+        data:formData,
+        withCredentials: false,
+    })
+    .then((res) => {
+        if (res.status === 200) {
+            console.log(res);
+            this.setState( { results: res});
+            let filePath = url + '/' + fileName;
+            this.setImage(filePath);
+        }
+        else {
+          console.log("Error occurred")
+        }
+    })
+    .catch((err) => { });
+  }
+
+  async setImage(path){
+    axios.get(path, {responseType: 'arraybuffer'})
+        .then((data) => {
+            let base64Flag = 'data:image/jpeg;base64,';
+            let imageStr = this.arrayBufferToBase64(data.data);
+            this.setState({ image: base64Flag + imageStr});
         })
-        .then((res) => {
-            if (res.status === 200) {
-                let filePath = url + '/' + fileName;
-                this.setImage(filePath);
-                console.log(this.state.results);
-            }
-            else {
-            console.log("Error occurred")
-            }
-        })
-        .catch((err) => { });
-    }
-    async setImage(path){
-        axios.get(path, { responseType: 'arraybuffer'})
-        .then(response => {
-            new Buffer(response.data, 'binary').toString('utf-8');
-            console.log(response);
-        })
-    }
+   }
+
+   arrayBufferToBase64(buffer) {
+    let binary = '';
+    let bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+}
 
     render() {
         return (
@@ -70,17 +80,15 @@ class GetFile extends React.Component {
                 <div>
                     <label htmlFor="get-file">
                         <div>
+                            <img src={this.state.image}
+                                 style={{maxWidth:"100%", height:"auto", marginTop:"20px", marginLeft:"auto", marginRight:"auto", marginBottom:"auto"}} />
                             <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
                             </Button>
                         </div>
                     </label>
-                    <img id="results" alt="Results" src=""/>
-                    {/* <div>
-                        <Button type="submit" variant="outlined" component="span" color="primary"
-                            onClick={()=>this.handleUpload()}>Upload</Button>
-                    </div> */}
                 </div>
+                <p>Results: {this.state.results}</p>
             </div>
         );
     }

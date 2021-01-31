@@ -1,4 +1,5 @@
 import { Parallax } from 'react-scroll-parallax';
+import React from "react";
 
 const Landing = () => (
     <div className="landing">
