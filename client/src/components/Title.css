@@ -1,0 +1,18 @@
+.Parallax__background{
+    color:black;
+    font-weight:350;
+    grid-column:2;
+    margin-bottom:-15vh;
+    margin-top:40vh;
+    padding-bottom:15vh;
+}
+.description__card{
+    min-height:30vh;
+    min-width: 30vw;
+    background-color: whitesmoke;
+    align-items: center;
+    align-content: center;
+}
+.description__card > p {
+    margin: 0 auto;
+}

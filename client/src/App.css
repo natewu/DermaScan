@@ -20,7 +20,6 @@
 }
 .scrollDown{
   animation: MoveUpDown 2s linear infinite;
-  
   position: absolute;
   margin: -3.8vh auto auto auto;
   font-size: 7vmin !important;
