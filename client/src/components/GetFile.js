@@ -39,7 +39,6 @@ class GetFile extends React.Component {
   }
 
     render() {
-      let {image} = this.state;
         return (
             <div className="getfile" style={this.props.passStyle}>
                 <input
@@ -53,7 +52,8 @@ class GetFile extends React.Component {
                 />
                 <div>
                     <label htmlFor="get-file">
-                    {image.map(image => <img id="test" alt="test" src={image} style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)}
+                    {this.state.file.map(image => <img id="test" alt="test" src={this.state.file}
+                                             style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)}
                         <div>
                             <Button variant="outlined" component="span" color="primary" className="btn1" onChange={this.handleUpload()}>
                                 Select Image
