@@ -32,7 +32,7 @@ class GetFile extends React.Component {
     })
       .then((res) => {
           if (res.status === 200) {
-            console.log("Success!")
+              console.log(res);
           }
           else {
             console.log("Error occurred")
