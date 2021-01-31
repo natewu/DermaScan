@@ -65,14 +65,12 @@ router.post('/', upload.single('file'), (req, res) => {
     model.then(model => {
       let result = model.predict(reshapedTensor);
       console.log(result);
+      res.send(result);
       // result = result.round().dataSync()[0];  // round and get value
       // alert(result ? "odd" : "even");  // creates pop-up
     });
   };
 
-
-      console.log(req.file);
-      res.send(req.file);
   });
 
 module.exports = router;

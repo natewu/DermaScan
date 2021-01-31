@@ -6,8 +6,9 @@ class GetFile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          file: '',
-          results: ''
+            file: '',
+            image: '',
+            results: ''
         };
         this.fileInput = React.createRef();
     }
@@ -36,6 +37,7 @@ class GetFile extends React.Component {
     })
     .then((res) => {
         if (res.status === 200) {
+            this.setState( { results: res});
             let filePath = url + '/' + fileName;
             this.setImage(filePath);
         }
@@ -45,14 +47,16 @@ class GetFile extends React.Component {
     })
     .catch((err) => { });
   }
+
   async setImage(path){
     axios.get(path, {responseType: 'arraybuffer'})
         .then((data) => {
             let base64Flag = 'data:image/jpeg;base64,';
             let imageStr = this.arrayBufferToBase64(data.data);
-            this.setState({ results: base64Flag + imageStr});
+            this.setState({ image: base64Flag + imageStr});
         })
    }
+
    arrayBufferToBase64(buffer) {
     let binary = '';
     let bytes = [].slice.call(new Uint8Array(buffer));
@@ -76,7 +80,7 @@ class GetFile extends React.Component {
                 <div>
                     <label htmlFor="get-file">
                         <div>
-                            <img src={this.state.results}
+                            <img src={this.state.image}
                                  style={{maxWidth:"100%", height:"auto", marginTop:"20px", marginLeft:"auto", marginRight:"auto", marginBottom:"auto"}} />
                             <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
@@ -84,6 +88,7 @@ class GetFile extends React.Component {
                         </div>
                     </label>
                 </div>
+                <p>Results: {this.state.results}</p>
             </div>
         );
     }
