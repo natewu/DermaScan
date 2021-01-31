@@ -8,6 +8,7 @@ const storage = multer.diskStorage({
     cb(null, `${file.originalname}`);
   },
 });
+
 const upload = multer({ storage });
 
 router.use(function(req, res, next){

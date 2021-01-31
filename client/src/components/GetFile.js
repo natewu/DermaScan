@@ -7,7 +7,8 @@ class GetFile extends React.Component {
         super(props);
         this.state = {
           file: '',
-          results: []
+          results: [],
+          setImage:[]
         };
     }
 
@@ -36,12 +37,18 @@ class GetFile extends React.Component {
             console.log(res);
             this.state.results[0]=res.data.path;
             console.log(this.state.results[0]);
+            this.setImage(this.state.results[0]);
         }
         else {
           console.log("Error occurred")
         }
     })
     .catch((err) => { });
+  }
+  async setImage(data){
+    this.state.setImage[0]="";
+    this.state.setImage[0]=data;
+    document.getElementById("results").src = "http://localhost:3005/"+this.state.setImage[0].replace("\\","/");
   }
 
     render() {
@@ -63,8 +70,8 @@ class GetFile extends React.Component {
                                 Select Image
                             </Button>
                         </div>
-                        {/* {this.state.results.map(image => <img id="test" alt="test" src={image} style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)} */}
                     </label>
+                    <img id="results" alt="Results" src=""/>
                     {/* <div>
                         <Button type="submit" variant="outlined" component="span" color="primary"
                             onClick={()=>this.handleUpload()}>Upload</Button>
