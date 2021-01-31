@@ -35,7 +35,7 @@ function Title() {
         <div className="col1" style={{display:"grid", gridTemplateColumns:"0.5fr 1fr 1fr 1fr 0.5fr"}}>
             <div className="Parallax__background" style={{transform: `translateY(-${offsetY *0.30}px)`}}>
                 <div className="description__card">
-                    <p id="description" style={{textAlign:"left", fontSize:"20px"}}/>
+                    <p id="description" style={{textAlign:"left", fontSize:"2vh"}}/>
                 </div>
             </div>
         </div>

@@ -7,12 +7,23 @@
     padding-bottom:15vh;
 }
 .description__card{
-    min-height:30vh;
+    min-height:25vh;
     min-width: 30vw;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.342);
     align-items: center;
     align-content: center;
+    display:grid;
+    filter:blur(0.3px);
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 1px 1px rgb(0 0 0 / 10%);
 }
+/* .description__card:before{
+    filter:blur(20px);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    background:inherit;
+} */
 .description__card > p {
-    margin: 0 auto;
+    grid-row: 2;
+    padding: 0 40px 0 40px;
 }
