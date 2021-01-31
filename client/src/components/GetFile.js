@@ -62,6 +62,7 @@ class GetFile extends React.Component {
                                 Select Image
                             </Button>
                         </div>
+                        {/* {this.state.results.map(image => <img id="test" alt="test" src={image} style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)} */}
                     </label>
                     {/* <div>
                         <Button type="submit" variant="outlined" component="span" color="primary"
