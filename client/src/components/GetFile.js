@@ -37,7 +37,7 @@ class GetFile extends React.Component {
           else {
             console.log("Error occurred")
           }
-          this.state.results[0] = res.status;
+          this.state.results[0] = res.data.path;
           console.log(this.state.results[0]);
       })
       .catch((err) => { });
