@@ -1,5 +1,6 @@
 import "./Footer.css";
 import GitHubIcon from '@material-ui/icons/GitHub';
+import React from "react";
 
 export default function Footer() {
     return (
@@ -10,9 +11,9 @@ export default function Footer() {
                         <GitHubIcon/> <p>Source Code</p>
                     </a>
                 </div>
-                
+
             </div>
-            
+
         </div>
     )
 }

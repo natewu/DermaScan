@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Scanner.css";
 import GetFile from "./GetFile";
+import Predictions from "./Predictions";
 
 export class Scanner extends Component {
     render() {
@@ -10,6 +11,7 @@ export class Scanner extends Component {
                 <div className="results">
                 </div>
                 <GetFile passStyle={styles}/>
+                <Predictions passStyle={styles}/>
             </div>
         )
     }

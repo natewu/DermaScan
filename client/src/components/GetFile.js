@@ -76,7 +76,8 @@ class GetFile extends React.Component {
                 <div>
                     <label htmlFor="get-file">
                         <div>
-                            <img src={this.state.results} alt='result' style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}} />
+                            <img src={this.state.results}
+                                 style={{maxWidth:"100%", height:"auto", marginTop:"20px", marginLeft:"auto", marginRight:"auto", marginBottom:"auto"}} />
                             <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
                             </Button>

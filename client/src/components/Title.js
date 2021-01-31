@@ -5,20 +5,20 @@ import "./Title.css";
 function Title() {
     const [offsetY, setOffsetY] = useState(0);
     const handleScroll = () => setOffsetY(window.pageYOffset);
-  
+
     useEffect(() => {
       window.addEventListener("scroll", handleScroll);
-  
+
       return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-  
+
     window.addEventListener('load', function () {
         var app = document.getElementById('description');
         var typewriter = new Typewriter(app, {
             loop: true,
             delay: 75,
           });
-          
+
           typewriter
             .pauseFor(10)
             .typeString('Over 85 million people in the U.S. are affected by skin diseases alone.')
@@ -28,7 +28,7 @@ function Title() {
             .typeString(' To address this issue, we have designed a skin detection AI app that will allow you to scan your skin whenever you want to stay healthy.')
             .pauseFor(5000)
             .start();
-    
+
     });
 
     return(
@@ -39,9 +39,9 @@ function Title() {
                 </div>
             </div>
         </div>
-    
+
     )
-    
+
 }
 
 export default Title;

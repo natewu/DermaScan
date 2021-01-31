@@ -10,7 +10,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./App.css";
 
 export class App extends Component {
-  
+
   render() {
     return (
       <div className="App" >
@@ -18,7 +18,7 @@ export class App extends Component {
           <Fade top>
             <Landing/>
           </Fade>
-          <Fade bottom>
+          <Fade middle>
             <div className="content">
               <ArrowDropDownIcon className="scrollDown"/>
               <Fade bottom>
@@ -27,6 +27,8 @@ export class App extends Component {
               <Rotate bottom left>
                 <Scanner/>
               </Rotate>
+              <Fade bottom>
+              </Fade>
             </div>
           </Fade>
           <Footer/>
