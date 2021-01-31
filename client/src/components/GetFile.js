@@ -9,7 +9,8 @@ class GetFile extends React.Component {
     }
 
     handleFile(e) {
-    this.setState({ file:e.target.files[0] });
+      console.log("Uploading....");
+      this.setState({ file:e.target.files[0] });
   }
 
   handleUpload(e) {
@@ -18,26 +19,27 @@ class GetFile extends React.Component {
     formData.append('name', 'skin pic');
     console.warn(this.state.file);
     axios({
-         url: "http://localhost:3005/image-uploads",
+        url: "http://localhost:3005/image-uploads",
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
-          "access-control-allow-origin": "*"
          },
         data:formData,
-        withCredentials: true,
+        withCredentials: false,
     })
       .then((res) => {
           if (res.status === 200) {
                     console.log("Success!")
-                }else {
-                    console.log("Error occurred")
                 }
+          else {
+              console.log("Error occurred")
+          }
       })
       .catch((err) => { });
   }
 
     render() {
+      let {image} = this.state;
         return (
             <div className="getfile" style={this.props.passStyle}>
                 <input
@@ -51,6 +53,7 @@ class GetFile extends React.Component {
                 />
                 <div>
                     <label htmlFor="get-file">
+                    {image.map(image => <img id="test" alt="test" src={image} style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)}
                         <div>
                             <Button variant="outlined" component="span" color="primary" className="btn1" onChange={this.handleUpload()}>
                                 Select Image

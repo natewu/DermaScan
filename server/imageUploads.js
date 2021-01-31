@@ -10,8 +10,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+router.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Credentials', false);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 router.get('/', function(req, res){
-   res.send('GET route on image uploads.');
+    res.send('GET route on image uploads.');
 });
 router.post('/', upload.single('file'), (req, res) => {
     const file = req.file; // file passed from client
