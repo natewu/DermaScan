@@ -20,6 +20,7 @@ router.use(function(req, res, next){
 
 router.get('/:image', function(req, res){
     res.sendFile(__dirname + '/image-uploads' + req.path);
+    //res.send(req);
 });
 router.post('/', upload.single('file'), (req, res) => {
     res.send("success");

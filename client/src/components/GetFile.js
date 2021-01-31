@@ -38,7 +38,6 @@ class GetFile extends React.Component {
         if (res.status === 200) {
             let filePath = url + '/' + fileName;
             this.setImage(filePath);
-            console.log(this.state.results);
         }
         else {
           console.log("Error occurred")
@@ -47,12 +46,19 @@ class GetFile extends React.Component {
     .catch((err) => { });
   }
   async setImage(path){
-  axios.get(path, { responseType: 'arraybuffer'})
-    .then(response => {
-        new Buffer(response.data, 'binary').toString('utf-8');
-        console.log(response);
-    })
+    axios.get(path, {responseType: 'arraybuffer'})
+        .then((data) => {
+            let base64Flag = 'data:image/jpeg;base64,';
+            let imageStr = this.arrayBufferToBase64(data.data);
+            this.setState({ results: base64Flag + imageStr});
+        })
    }
+   arrayBufferToBase64(buffer) {
+    let binary = '';
+    let bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+}
 
     render() {
         return (
@@ -70,12 +76,12 @@ class GetFile extends React.Component {
                 <div>
                     <label htmlFor="get-file">
                         <div>
+                            <img src={this.state.results} alt='result' style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}} />
                             <Button variant="outlined" component="span" color="primary" className="btn1" >
                                 Select Image
                             </Button>
                         </div>
                     </label>
-                    <img id="results" alt="Results" src=""/>
                 </div>
             </div>
         );
