@@ -12,7 +12,7 @@
 }
 .content{
   margin-top: 0 auto;
-  background-color: #E5F8F5;
+  background-image: linear-gradient(135deg, #d6f1ed, #7dc1e9);
   padding-bottom: 100px;
   /* display:grid; */
   /* grid-template-columns: 0.5fr 1fr 3fr 1fr 0.5fr; */
@@ -20,7 +20,6 @@
 }
 .scrollDown{
   animation: MoveUpDown 2s linear infinite;
-  
   position: absolute;
   margin: -3.8vh auto auto auto;
   font-size: 7vmin !important;

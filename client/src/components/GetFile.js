@@ -12,13 +12,13 @@ class GetFile extends React.Component {
         this.fileInput = React.createRef();
     }
 
-  handleFile(e) {
-      console.log("Uploading....");
-      this.state.file = e.target.files[0];
-      let fileName = this.fileInput.current.files[0].name;
-      console.log(fileName);
-      this.handleUpload(fileName);
-  }
+    handleFile(e) {
+        console.log("Uploading....");
+        this.state.file = e.target.files[0];
+        let fileName = this.fileInput.current.files[0].name;
+        console.log(fileName);
+        this.handleUpload(fileName);
+    }
 
   async handleUpload(fileName) {
     let formData = new FormData();
