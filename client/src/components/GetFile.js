@@ -5,7 +5,10 @@ import Button from '@material-ui/core/Button';
 class GetFile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {file: '' };
+        this.state = {
+          file: '',
+          results: []
+        };
     }
 
     handleFile(e) {
@@ -17,7 +20,7 @@ class GetFile extends React.Component {
     let formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('name', 'skin pic');
-    console.warn(this.state.file);
+    console.log(this.state.file);
     axios({
         url: "http://localhost:3005/image-uploads",
         method: "POST",
@@ -29,11 +32,13 @@ class GetFile extends React.Component {
     })
       .then((res) => {
           if (res.status === 200) {
-                    console.log("Success!")
-                }
-          else {
-              console.log("Error occurred")
+            console.log("Success!")
           }
+          else {
+            console.log("Error occurred")
+          }
+          this.state.results[0] = res.status;
+          console.log(this.state.results[0]);
       })
       .catch((err) => { });
   }
@@ -52,8 +57,6 @@ class GetFile extends React.Component {
                 />
                 <div>
                     <label htmlFor="get-file">
-                    {this.state.file.map(image => <img id="test" alt="test" src={this.state.file}
-                                             style={{maxWidth:"100%", height:"auto", marginTop:"10px", marginLeft:"auto", marginRight:"auto"}}/>)}
                         <div>
                             <Button variant="outlined" component="span" color="primary" className="btn1" onChange={this.handleUpload()}>
                                 Select Image
