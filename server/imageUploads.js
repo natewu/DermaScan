@@ -18,11 +18,10 @@ router.use(function(req, res, next){
   next();
 });
 
-router.get('/', function(req, res){
-    res.send('GET route on image uploads.');
+router.get('/:image', function(req, res){
+    res.sendFile(__dirname + '/image-uploads' + req.path);
 });
 router.post('/', upload.single('file'), (req, res) => {
-    console.log(req.file);
-    res.send(req.file);
+    res.send("success");
 });
 module.exports = router;
